@@ -4,7 +4,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongod = new MongoMemoryServer();
 
 /**
- * Connect to the in-memory database.
+ * Connexion à la mémoire de la base de donnée
  */
 module.exports.connect = async () => {
     const uri = await mongod.getConnectionString();
@@ -20,7 +20,8 @@ module.exports.connect = async () => {
 }
 
 /**
- * Drop database, close the connection and stop mongod.
+ * Laisser la base de données, fermer la connexion et stopper mongod
+ * 
  */
 module.exports.closeDatabase = async () => {
     await mongoose.connection.dropDatabase();
@@ -29,7 +30,7 @@ module.exports.closeDatabase = async () => {
 }
 
 /**
- * Remove all the data for all db collections.
+ * Supprimer toutes les données des collections de la base de donnée
  */
 module.exports.clearDatabase = async () => {
     const collections = mongoose.connection.collections;
@@ -39,3 +40,7 @@ module.exports.clearDatabase = async () => {
         await collection.deleteMany();
     }
 }
+
+
+
+

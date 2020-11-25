@@ -1,44 +1,46 @@
 const mongoose = require('mongoose');
 
 const dbHandler = require('./db-handler');
-// const productService = require('../src/services/product');
+
 const playlistModel = require('../bdd/SchemaPlaylistTitresProposes');
 
 /**
- * Connect to a new in-memory database before running any tests.
+ * Connexion à la mémoire de la base de données avant tout test
  */
 beforeAll(async () => await dbHandler.connect());
 
 /**
- * Clear all test data after every test.
+ * Nettoyage de tout test avant de procéder à un test
  */
 afterEach(async () => await dbHandler.clearDatabase());
 
 /**
- * Remove and close the db and server.
+ * Fermeture de la base de donnée et du serveur
  */
 afterAll(async () => await dbHandler.closeDatabase());
 
 /**
- * Top test suite.
+ * Début du test
  */
 describe('playlist', () => {
 
     /**
-     * Tests that a valid product can be created through the productService without throwing any errors.
+     * Vérification qu'une chanson peut être enregistrée en base de donnée sans erreur
      */
-    it('can be created correctly', async () => {
-        expect(async () => await productService.create(playlisttest))
+    it('peut être créé correctement', async () => {
+
+        /**
+         * Chanson exemple
+         */
+        var newTitre = new playlistModel({
+            titre: 'auteur - chanson test',
+            vote: ['votestest'],
+            user: 'utilisateur test'
+          })
+
+        expect(async () => await newTitre.save())
             .not
             .toThrow();
     });
 });
 
-/**
- * Complete product example.
- */
-const playlisttest = {
-    titre: 'auteur - chanson test',
-    votes: ['votestest'],
-    user: 'utilisateur test'
-};

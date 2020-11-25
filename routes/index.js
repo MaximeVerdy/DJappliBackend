@@ -12,7 +12,7 @@ var playlistModel = require('../bdd/SchemaPlaylistTitresProposes');
 
 // route initiale créée de base
 router.get('/', function (req, res, next) {
-  res.render('index');
+  res.send({title: "Express"});
 });
 
 

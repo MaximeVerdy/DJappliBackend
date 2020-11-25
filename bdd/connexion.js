@@ -14,3 +14,4 @@ mongoose.connect('mongodb+srv://admin:30094561@cluster0.xutoc.mongodb.net/EveryO
 
 
 module.exports = mongoose;
+

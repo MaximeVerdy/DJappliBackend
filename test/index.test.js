@@ -6,7 +6,7 @@ describe('test route /', function (){
   test('test get ok', async(done) => {
     await request(app).get("/")
     .expect(200)
-    .expect({title: 'Express'})
+    .expect({title: "Express"})
    done()
   })
   test('test get non ok', async(done) => {
@@ -21,3 +21,4 @@ describe('test route /', function (){
    done()
   })
 })
+
